@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_firebase_login/authentication_bloc/authentication_bloc.dart';
 import 'package:flutter_firebase_login/user_repository.dart';
 import 'package:flutter_firebase_login/home_screen.dart';
-import 'package:flutter_firebase_login/login/login.dart';
+//import 'package:flutter_firebase_login/login/login.dart';
+import 'package:flutter_firebase_login/welcome/welcome_screen.dart';
 import 'package:flutter_firebase_login/splash_screen.dart';
 import 'package:flutter_firebase_login/simple_bloc_observer.dart';
 
@@ -36,7 +37,7 @@ class App extends StatelessWidget {
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is AuthenticationFailure) {
-            return LoginScreen(userRepository: _userRepository);
+            return WelcomeScreen(userRepository: _userRepository);
           }
           if (state is AuthenticationSuccess) {
             return HomeScreen(name: state.displayName);
